@@ -9,6 +9,7 @@
  * @author: Nandhini Namasivayam
  * @version: Jan 2023
  */
+import java.awt.*;
 
 public class Square {
 
@@ -16,6 +17,8 @@ public class Square {
     private int row;
     private int col;
     private boolean isWinningSquare;
+    private TicTacToeViewer board;
+    private Image playerX, playerO;
 
     /**
      * Constructor to initialize one Square of the
@@ -23,12 +26,17 @@ public class Square {
      * @param row the row the square is in
      * @param col the column the square is in
      */
-    public Square(int row, int col) {
+    public Square(int row, int col, TicTacToeViewer board) {
+        this.board = board;
         this.row = row;
         this.col = col;
 
         this.marker = TicTacToe.BLANK;
         this.isWinningSquare = false;
+
+        // Initializing images in Square
+        playerX = board.getImages()[0];
+        playerO = board.getImages()[1];
     }
 
     /******************** Getters and Setters ********************/
@@ -57,5 +65,18 @@ public class Square {
      */
     public String toString() {
         return this.marker;
+    }
+
+    public void draw(Graphics g) {
+        // check if winning
+        if (this.isWinningSquare == true) {
+            g.setColor(Color.GREEN);
+            g.fillRect(col * 150 + 200, row * 150 + 200, 150, 150);
+        }
+        // draw character based on the marker
+        if (this.equals(TicTacToe.X_MARKER))
+            g.drawImage(playerX, col * 150 + 200, row * 150 + 200, 150, 150, board);
+        else if (this.equals(TicTacToe.O_MARKER))
+            g.drawImage(playerO, col * 150 + 200, row * 150 + 200, 150, 150, board);
     }
 }
