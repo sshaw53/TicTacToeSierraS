@@ -35,8 +35,8 @@ public class Square {
         this.isWinningSquare = false;
 
         // Initializing images in Square
-        playerX = board.getImages()[0];
-        playerO = board.getImages()[1];
+//        playerX = board.getImages()[0];
+//        playerO = board.getImages()[1];
     }
 
     /******************** Getters and Setters ********************/
@@ -74,9 +74,9 @@ public class Square {
             g.fillRect(col * 150 + 200, row * 150 + 200, 150, 150);
         }
         // draw character based on the marker
-        if (this.equals(TicTacToe.X_MARKER))
-            g.drawImage(playerX, col * 150 + 200, row * 150 + 200, 150, 150, board);
-        else if (this.equals(TicTacToe.O_MARKER))
-            g.drawImage(playerO, col * 150 + 200, row * 150 + 200, 150, 150, board);
+        if (marker.equals(TicTacToe.X_MARKER))
+            g.drawImage(board.getImages()[0], col * 150 + 200, row * 150 + 200, 150, 150, board);
+        else if (marker.equals(TicTacToe.O_MARKER))
+            g.drawImage(board.getImages()[1], col * 150 + 200, row * 150 + 200, 150, 150, board);
     }
 }

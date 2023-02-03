@@ -115,6 +115,7 @@ public class TicTacToe
         // Loop until there is a winner or no more turns
         while(!this.checkWin() && this.checkTurn()) {
             this.printBoard();
+            window.repaint();
             System.out.println("Enter your Row Pick:" );
             int row = input.nextInt();
             System.out.println("Enter your Col Pick:" );
